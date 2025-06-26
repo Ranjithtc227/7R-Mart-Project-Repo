@@ -68,7 +68,7 @@ public class AdminUsersPage {
   	 return alertmsg.isDisplayed();
     }
     
-    @FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/user/edit?edit=14548&page_ad=1']")WebElement edit;
+    @FindBy(xpath="//table/tbody/tr[1]/td[5]/a[2]/i")WebElement edit;
     @FindBy(xpath="//button[@name='Update']")WebElement update;
     @FindBy(xpath="//h5[text()=' Alert!']")WebElement alert;
     

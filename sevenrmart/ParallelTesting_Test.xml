@@ -9,21 +9,15 @@
 </listeners>
 
   <test name="ChromeTest">        <!-- Test On Chrome-->
- 
     <classes>
           <class name="testscript.AdminUsersTest"/>
-    </classes>
-    
+    </classes>  
   </test>                                          <!-- Test On Chrome-->
   
-  
   <test thread-count="5" name="EdgeTest">           <!-- Test On Edge-->
-  
-     <classes>
+    <classes>
           <class name="testscript.LogoutTest"/>
-    </classes>
-    
-    
+    </classes>   
   </test>                                           <!-- Test On Edge-->
   
 </suite> <!-- Suite -->

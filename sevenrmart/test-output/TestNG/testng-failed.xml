@@ -4,13 +4,6 @@
   <test thread-count="5" name="Test(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="testscript.ManageNewsTest">
-        <methods>
-          <include name="browserInitialisation"/>
-          <include name="driverQuit"/>
-          <include name="verifyTheUserIsAbleToUpdateTheNews"/>
-        </methods>
-      </class> <!-- testscript.ManageNewsTest -->
       <class name="testscript.ManageCategoryTest">
         <methods>
           <include name="browserInitialisation"/>
@@ -18,14 +11,6 @@
           <include name="driverQuit"/>
         </methods>
       </class> <!-- testscript.ManageCategoryTest -->
-      <class name="testscript.AdminUsersTest">
-        <methods>
-          <include name="browserInitialisation"/>
-          <include name="verifyTheUserIsAbleToUpdateTheAdminUsers"/>
-          <include name="verifyTheUserIsAbleToCreateTheAdminUsers"/>
-          <include name="driverQuit"/>
-        </methods>
-      </class> <!-- testscript.AdminUsersTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [TestNG] -->

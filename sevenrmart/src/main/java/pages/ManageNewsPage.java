@@ -49,7 +49,7 @@ public class ManageNewsPage
 	 return alert.isDisplayed();
    }
  
-   @FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/news/edit?edit=6377&page_ad=1']") WebElement edit;
+   @FindBy(xpath="//table/tbody/tr[3]/td[2]/a[1]/i") WebElement edit;
    @FindBy(xpath="//button[@name='update']") WebElement update;
    @FindBy(xpath="//h5[text()=' Alert!']") WebElement alertmsg;
   
