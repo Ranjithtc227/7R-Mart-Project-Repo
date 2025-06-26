@@ -15,7 +15,7 @@ public class LoginPage{
 	@FindBy(xpath="//p[text()='Dashboard']")WebElement dashboard;
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")WebElement alertmsg;
 	
-	public LoginPage(WebDriver driver)                                                    
+	public LoginPage(WebDriver driver)                                                 
 	{
 		this.driver=driver;                                                              
 		PageFactory.initElements(driver, this);
