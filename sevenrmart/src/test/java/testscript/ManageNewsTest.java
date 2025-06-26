@@ -2,8 +2,6 @@ package testscript;
 
 import java.io.IOException;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +11,7 @@ import utilities.ExcelUtility;
 
 public class ManageNewsTest extends Base{
 	
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class)
 	
 	public void verifyTheUserIsAbleToEnterTheNews() throws IOException
 	{
@@ -41,7 +39,7 @@ public class ManageNewsTest extends Base{
 		
 	}
 	
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class)
 	public void verifyTheUserIsAbleToUpdateTheNews() throws IOException
 	{
 		

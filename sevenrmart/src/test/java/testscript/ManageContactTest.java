@@ -31,7 +31,9 @@ public class ManageContactTest extends Base
  		managecontactpage.phonenumberManageContact(managephoneno);
  		managecontactpage.emailManageContact(manageemail);
  		managecontactpage.addressManageContact(manageaddress);
- 		//managecontactpage.updateManageContact();
+ 		managecontactpage.updateManageContact();
+ 		boolean alertmsg=managecontactpage.isAlertMessageIsDisplayed();
+		Assert.assertTrue(alertmsg);
        }
      @Test
      public void verifyTheUserIsAbleToDisplayContactUsInformations() throws IOException

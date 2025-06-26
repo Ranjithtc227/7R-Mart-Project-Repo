@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testscript.AdminUsersTest">
+      <class name="testscript.ManageCategoryTest">
         <methods>
           <include name="browserInitialisation"/>
-          <include name="verifyTheUserIsAbleToCreateTheAdminUsers"/>
+          <include name="verifyTheUserIsAbleToAddCategoryInformations"/>
           <include name="driverQuit"/>
         </methods>
-      </class> <!-- testscript.AdminUsersTest -->
+      </class> <!-- testscript.ManageCategoryTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

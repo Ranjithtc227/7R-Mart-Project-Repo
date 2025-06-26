@@ -12,6 +12,7 @@ public class LogoutPage {
 	@FindBy(xpath="//button[@type='submit']")WebElement signin;
 	@FindBy(xpath="//img[@src='https://groceryapp.uniqassosiates.com/public/assets/admin/dist/img/avatar5.png']")WebElement image;
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/logout']//parent::div")WebElement logout;
+	@FindBy(xpath="//button[text()='Sign In']")WebElement signinpage;
 	
 	public WebDriver driver;
 	
@@ -28,5 +29,10 @@ public class LogoutPage {
 	public void userLogout()
 	{
 		logout.click();
+	}
+	
+	public boolean signinPageDisplayed()
+	{
+		return signinpage.isDisplayed();
 	}
 }

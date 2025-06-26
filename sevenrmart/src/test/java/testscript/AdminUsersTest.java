@@ -33,7 +33,6 @@ public class AdminUsersTest extends Base{
 				AdminUsersPage adminuserspage=new AdminUsersPage(driver);
 				
 				FakerUtility fakerutility=new FakerUtility();
-				
 				String adminusername=fakerutility.creatARandomFirstName();
 				String adminpassword=fakerutility.creatARandomFirstName();
 				
@@ -48,7 +47,7 @@ public class AdminUsersTest extends Base{
 				Assert.assertTrue(alertmsg);
 	}
 	
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class)
 	public void verifyTheUserIsAbleToUpdateTheAdminUsers() throws IOException
 	{
 		String username=ExcelUtility.getStringData(1, 0, "loginpage");
@@ -63,6 +62,7 @@ public class AdminUsersTest extends Base{
 		adminuserspage.clickMoreInformationAdmin();
 		adminuserspage.editAdminUsers();
 		adminuserspage.updateAdminUsers();
+		
 		boolean alert=adminuserspage.displayAlert();
 		Assert.assertTrue(alert);
 	}

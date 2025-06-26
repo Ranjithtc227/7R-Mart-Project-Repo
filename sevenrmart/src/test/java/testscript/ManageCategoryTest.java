@@ -13,7 +13,7 @@ import utilities.ExcelUtility;
 @Test
 public class ManageCategoryTest extends Base{
     
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class)
 	public void verifyTheUserIsAbleToAddCategoryInformations() throws IOException, AWTException
 	{
 
