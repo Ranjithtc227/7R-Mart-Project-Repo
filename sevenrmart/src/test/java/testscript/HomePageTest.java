@@ -1,0 +1,39 @@
+package testscript;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import pages.LoginPage;
+import pages.HomePage;
+import utilities.ExcelUtility;
+
+public class HomePageTest extends Base {
+    
+	public HomePage homepage;
+	
+	@Test(retryAnalyzer = retry.Retry.class,description="Verify that the user can log out successfully and is redirected to the login page with the session terminated")
+	public void isUserIsAbleToLogOut() throws IOException {
+		String username = ExcelUtility.getStringData(1, 0, "loginpage");
+		String password = ExcelUtility.getStringData(1, 1, "loginpage");
+
+		LoginPage loginpage = new LoginPage(driver);
+		loginpage.enterTheUserName(username).enterThePassword(password);
+		homepage=loginpage.clickTheSignInButton();
+		homepage.admin().userLogout();
+	   
+		
+		/*loginpage.enterTheUserName(username);
+		loginpage.enterThePassword(password);
+		loginpage.clickTheSignInButton();
+
+		HomePage logoutpage = new HomePage(driver);
+		logoutpage.admin();
+		logoutpage.userLogout();*/
+
+		boolean signpage = homepage.isSigninPageDisplayed();
+		Assert.assertTrue(signpage,"Logout failed. Please try again");
+
+	}
+}

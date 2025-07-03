@@ -17,62 +17,51 @@ import constants.Constants;
 import utilities.ScreenshotUtility;
 import utilities.WaitUtility;
 
-
 public class Base {
 
-WebDriver driver;
+	WebDriver driver;
 
-public Properties properties;
-public FileInputStream fileinputstream;
-	
-    @Parameters("browser")                      //Injects parameters from XML configuration
-	@BeforeMethod(alwaysRun=true)                                         //Runs before every @Test method
-   public void browserInitialisation(String browser) throws Exception
-    {
-      try {
-			   properties=new Properties();
-			   fileinputstream=new FileInputStream(Constants.CONFIGFILE);
-			   properties.load(fileinputstream);
-		  }
-		  catch(Exception e)
-		  {
+	public Properties properties;
+	public FileInputStream fileinputstream;
+
+	@Parameters("browser") // Injects parameters from XML configuration
+	@BeforeMethod(alwaysRun = true) // Runs before every @Test method
+	public void browserInitialisation(String browser) throws Exception {
+		try {
+			properties = new Properties();
+			fileinputstream = new FileInputStream(Constants.CONFIGFILE);
+			properties.load(fileinputstream);
+		} catch (Exception e) {
 			System.out.println("INVALID");
-		  }
-    	
-        //driver=new ChromeDriver();
-    	
-    	if(browser.equalsIgnoreCase("Chrome"))
-    	{
-    		driver=new ChromeDriver();
-    	}
-    	else if(browser.equalsIgnoreCase("Edge"))
-    	{
-    		driver=new EdgeDriver();
-    	}
-    	else
-    	{
-    		throw new Exception("INVALID");
-    	}
-    	
-    	//driver.get("https://groceryapp.uniqassosiates.com/admin");
-    	
-    	driver.get(properties.getProperty("url"));
-    	
-    	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtility.IMPLICIT_WAIT));
-    	driver.manage().window().maximize();
-    	
-    }
-	
-   
-    @AfterMethod(alwaysRun=true)                                          //Runs after every @Test method
-	public void driverQuit(ITestResult iTestResult) throws IOException
-    {
-    	if (iTestResult.getStatus() == ITestResult.FAILURE) { 
-			ScreenshotUtility scrShot = new ScreenshotUtility(); 
-			scrShot.getScreenShot(driver, iTestResult.getName()); 
 		}
-		//driver.close();
-    	driver.quit();
-		
+
+		// driver=new ChromeDriver();
+
+		if (browser.equalsIgnoreCase("Chrome")) {
+			driver = new ChromeDriver();
+		} else if (browser.equalsIgnoreCase("Edge")) {
+			driver = new EdgeDriver();
+		} else {
+			throw new Exception("INVALID");
+		}
+
+		// driver.get("https://groceryapp.uniqassosiates.com/admin");
+
+		driver.get(properties.getProperty("url"));
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtility.IMPLICIT_WAIT));
+		driver.manage().window().maximize();
+
+	}
+
+	@AfterMethod(alwaysRun = true) // Runs after every @Test method
+	public void driverQuit(ITestResult iTestResult) throws IOException {
+		if (iTestResult.getStatus() == ITestResult.FAILURE) {
+			ScreenshotUtility scrShot = new ScreenshotUtility();
+			scrShot.getScreenShot(driver, iTestResult.getName());
+		}
+		// driver.close();
+		driver.quit();
+
 	}
 }
