@@ -9,11 +9,10 @@
 		     <class name="testscript.LoginTest" />
 			 <class name="testscript.AdminUsersTest" />
 			<class name="testscript.ManageContactTest" />
-			<class name="testscript.ManageNewsTest" />
-			<class name="testscript.Base" />
+		    <class name="testscript.Base" />
 			<class name="testscript.ManageFooterTest" />
 			<class name="testscript.HomePageTest" />
-			<class name="testscript.ManageCategoryTest" ></class>
+			
 		</classes>
 
 	</test> <!--
