@@ -20,8 +20,7 @@ public class ManageCategoryPage {
 	WebElement pword;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signin;
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category']//parent::li/a")
-	WebElement moreinfo;
+	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/Category/add']")
 	WebElement newbtn;
 	@FindBy(xpath = "//input[@id='category']")
@@ -30,8 +29,8 @@ public class ManageCategoryPage {
 	WebElement selectgrp;
 	@FindBy(xpath = "//input[@id='main_img']")
 	WebElement choosefilebtn;
-	@FindBy(xpath = "//button[text()='Save']")
-	WebElement savebtn;
+	@FindBy(xpath = "//button[text()='Save']")WebElement savebtn;
+	
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement alertmsg;
 
@@ -42,40 +41,39 @@ public class ManageCategoryPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void moreInfoManageCategory() {
-		PageUtility pageutility = new PageUtility();
-		pageutility.javaSriptClick(driver, moreinfo); // moreinfo.click();
+	
 
-	}
-
-	public void newButton() {
+	public ManageCategoryPage newButton() {
 		newbtn.click();
+		return this;
 	}
 
-	public void categoryInformation(String catgry) {
+	public ManageCategoryPage categoryInformation(String catgry) {
 		category.clear();
 		category.sendKeys(catgry);
+		return this;
 	}
 
-	public void selectGroup() {
+	public ManageCategoryPage selectGroup() {
 		selectgrp.click();
-
+        return this;
 	}
 
-	public void imageUpload() throws AWTException {
+	public ManageCategoryPage imageUpload() throws AWTException {
 		WaitUtility waitutility = new WaitUtility();
 		waitutility.waitForElementToBeClickable(driver, choosefilebtn);
 
 		FileUploadUtility fileupload = new FileUploadUtility();
 		// fileupload.fileuploadUsingRobertClass(choosefilebtn, Constants.IMAGEFILE);
 		fileupload.fileUploadUsingSendKeys(choosefilebtn, Constants.IMAGEFILE);
-
+        return this;
 	}
 
-	public void saveCategoryInformations() {
+	public ManageCategoryPage saveCategoryInformations() {
 
 		PageUtility pageutility = new PageUtility();
 		pageutility.javaSriptClick(driver, savebtn); // savebtn.click();
+		return this;
 	}
 
 	public boolean isAlertMessageIsDisplayed() {

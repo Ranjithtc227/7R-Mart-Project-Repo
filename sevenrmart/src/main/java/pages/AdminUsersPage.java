@@ -77,12 +77,14 @@ public class AdminUsersPage {
 
 
 
-	public void editAdminUsers() {
+	public AdminUsersPage editAdminUsers() {
 		edit.click();
+		return this;
 	}
 
-	public void updateAdminUsers() {
+	public AdminUsersPage updateAdminUsers() {
 		update.click();
+		return this;
 	}
 
 	public boolean isDisplayAlert() {

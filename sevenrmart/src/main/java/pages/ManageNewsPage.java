@@ -14,8 +14,6 @@ public class ManageNewsPage {
 	WebElement pword;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signin;
-	@FindBy(xpath = " //a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']//parent::li")
-	WebElement moreinfo;
 	@FindBy(xpath = " //a[text()=' New']")
 	WebElement newoption;
 	@FindBy(xpath = " //textarea[@id='news']")
@@ -36,35 +34,37 @@ public class ManageNewsPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void clickMoreInformation() {
-		moreinfo.click();
-	}
-
-	public void clickNewButton() {
+	public ManageNewsPage clickNewButton() {
 		newoption.click();
+		return this;
 	}
 
-	public void enterNewsInformation(String news) {
+	public ManageNewsPage enterNewsInformation(String news) {
 		enternews.sendKeys(news);
+		return this;
 	}
 
-	public void saveNews() {
+	public ManageNewsPage saveNews() {
 		save.click();
+		return this;
 	}
 
 	public boolean isDisplayAlertMessage() {
 		return alert.isDisplayed();
 	}
 
-	public void editNews() {
+	public ManageNewsPage editNews() {
 		edit.click();
+		return this;
 	}
 
-	public void updateNews() {
+	public ManageNewsPage updateNews() {
 		update.click();
+		return this;
 	}
 
-	public boolean isDisplayAlert() {
+	/*public boolean isDisplayAlert() {
 		return alertmsg.isDisplayed();
-	}
+	}*/
+	
 }

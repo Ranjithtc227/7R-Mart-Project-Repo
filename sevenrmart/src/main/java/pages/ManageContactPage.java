@@ -14,8 +14,6 @@ public class ManageContactPage {
 	WebElement pword;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signin;
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact']//parent::li/a")
-	WebElement moreinfomcontact;
 	@FindBy(xpath = "//i[@class='fas fa-edit']//parent::a/i")
 	WebElement action;
 	@FindBy(xpath = "//input[@id='phone']")
@@ -36,32 +34,34 @@ public class ManageContactPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void moreInfoManageContact() {
-		moreinfomcontact.click();
-	}
-
-	public void actionManageContact() {
+	
+	public ManageContactPage actionManageContact() {
 		action.click();
+		return this;
 	}
 
-	public void phonenumberManageContact(String phno) {
+	public ManageContactPage phonenumberManageContact(String phno) {
 		phone.clear();
 		phone.sendKeys(phno);
+		return this;
 	}
 
-	public void emailManageContact(String emailid) {
+	public ManageContactPage emailManageContact(String emailid) {
 		email.clear();
 		email.sendKeys(emailid);
+		return this;
 	}
 
-	public void addressManageContact(String add) {
+	public ManageContactPage addressManageContact(String add) {
 		address.clear();
 		address.sendKeys(add);
+		return this;
 	}
 
-	public void updateManageContact() {
+	public ManageContactPage updateManageContact() {
 		PageUtility pageutility = new PageUtility();
 		pageutility.javaSriptClick(driver, update); // update.click();
+		return this;
 	}
 
 	public boolean isAlertMessageIsDisplayed() {

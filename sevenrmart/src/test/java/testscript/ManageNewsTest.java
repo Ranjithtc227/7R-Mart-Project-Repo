@@ -5,12 +5,17 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constants.Constants;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageNewsPage;
 import utilities.ExcelUtility;
 
-public class ManageNewsTest extends Base {
-
+public class ManageNewsTest extends Base 
+{
+   public ManageNewsPage managenewspage;
+   public HomePage homepage;
+   
 	@Test(retryAnalyzer = retry.Retry.class,description="To verify that an authorized user is able to successfully Enter the 'News' information")
 
 	public void verifyTheUserIsAbleToEnterTheNews() throws IOException {
@@ -21,9 +26,17 @@ public class ManageNewsTest extends Base {
 
 		String username = ExcelUtility.getStringData(1, 0, "loginpage");
 		String password = ExcelUtility.getStringData(1, 1, "loginpage");
+		
+		String news = ExcelUtility.getStringData(1, 0, "managenewspage");
+
 
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterTheUserName(username);
+		loginpage.enterTheUserName(username).enterThePassword(password);
+		homepage=loginpage.clickTheSignInButton();
+		managenewspage=homepage.clickMoreInformation();
+		managenewspage.clickNewButton().enterNewsInformation(news).saveNews();
+		
+		/*loginpage.enterTheUserName(username);
 		loginpage.enterThePassword(password);
 		loginpage.clickTheSignInButton();
 
@@ -33,9 +46,10 @@ public class ManageNewsTest extends Base {
 		managenewspage.clickMoreInformation();
 		managenewspage.clickNewButton();
 		managenewspage.enterNewsInformation(news);
-		managenewspage.saveNews();
+		managenewspage.saveNews();*/
+		
 		boolean alertmessage = managenewspage.isDisplayAlertMessage();
-		Assert.assertTrue(alertmessage,"News information not displayed as expected");
+		Assert.assertTrue(alertmessage,Constants.MANAGENEWSTESTENTERNEWS);
    }
 
 	
@@ -46,18 +60,24 @@ public class ManageNewsTest extends Base {
 		String password = ExcelUtility.getStringData(1, 1, "loginpage");
 
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterTheUserName(username);
+		loginpage.enterTheUserName(username).enterThePassword(password);
+		homepage=loginpage.clickTheSignInButton();
+		managenewspage=homepage.clickMoreInformation();
+		managenewspage.editNews().updateNews();
+		
+		/*loginpage.enterTheUserName(username);
 		loginpage.enterThePassword(password);
 		loginpage.clickTheSignInButton();
 
 		ManageNewsPage managenewspage = new ManageNewsPage(driver);
 		managenewspage.clickMoreInformation();
 		managenewspage.editNews();
-		managenewspage.updateNews();
-		managenewspage.isDisplayAlert();
+		managenewspage.updateNews();*/
+		
+		//managenewspage.isDisplayAlert();
 
 		boolean alertmsg = managenewspage.isDisplayAlertMessage();
-		Assert.assertTrue(alertmsg,"News information not updated as expected");
+		Assert.assertTrue(alertmsg,Constants.MANAGENEWSTESTUPDATENEWS);
 
 	}
 }

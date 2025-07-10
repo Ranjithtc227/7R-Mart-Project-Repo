@@ -11,6 +11,14 @@
           <include name="driverQuit"/>
         </methods>
       </class> <!-- testscript.ManageCategoryTest -->
+      <class name="testscript.ManageNewsTest">
+        <methods>
+          <include name="browserInitialisation"/>
+          <include name="driverQuit"/>
+          <include name="verifyTheUserIsAbleToEnterTheNews"/>
+          <include name="verifyTheUserIsAbleToUpdateTheNews"/>
+        </methods>
+      </class> <!-- testscript.ManageNewsTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [TestNG] -->

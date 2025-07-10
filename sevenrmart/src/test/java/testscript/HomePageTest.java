@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constants.Constants;
 import pages.LoginPage;
 import pages.HomePage;
 import utilities.ExcelUtility;
@@ -13,7 +14,7 @@ public class HomePageTest extends Base {
     
 	public HomePage homepage;
 	
-	@Test(retryAnalyzer = retry.Retry.class,description="Verify that the user can log out successfully and is redirected to the login page with the session terminated")
+	@Test(retryAnalyzer = retry.Retry.class,description="Verify user can log out and is redirected to the login page.")
 	public void isUserIsAbleToLogOut() throws IOException {
 		String username = ExcelUtility.getStringData(1, 0, "loginpage");
 		String password = ExcelUtility.getStringData(1, 1, "loginpage");
@@ -33,7 +34,7 @@ public class HomePageTest extends Base {
 		logoutpage.userLogout();*/
 
 		boolean signpage = homepage.isSigninPageDisplayed();
-		Assert.assertTrue(signpage,"Logout failed. Please try again");
+		Assert.assertTrue(signpage,Constants.HOMEPAGETESTCHECKLOGOUT);
 
 	}
 }
